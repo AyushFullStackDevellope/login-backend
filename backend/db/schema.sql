@@ -1,0 +1,67 @@
+-- SCOS Database Schema
+-- Enable UUID extension if needed
+-- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE tenants (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  code VARCHAR(100) UNIQUE NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'active',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE institutes (
+  id SERIAL PRIMARY KEY,
+  tenant_id INTEGER REFERENCES tenants(id) ON DELETE CASCADE,
+  name VARCHAR(255) NOT NULL,
+  code VARCHAR(100) UNIQUE NOT NULL,
+  type VARCHAR(50) NOT NULL,
+  subtype VARCHAR(50),
+  city VARCHAR(100),
+  state VARCHAR(100),
+  logo VARCHAR(255),
+  status VARCHAR(20) NOT NULL DEFAULT 'active',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+ 
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  full_name VARCHAR(200) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  mobile VARCHAR(20),
+  password_hash VARCHAR(255) NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'active',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE roles (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  code VARCHAR(100) UNIQUE NOT NULL,
+  description TEXT,
+  status VARCHAR(20) NOT NULL DEFAULT 'active',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE user_institute_roles (
+  id SERIAL PRIMARY KEY,
+  tenant_id INTEGER REFERENCES tenants(id) ON DELETE CASCADE,
+  institute_id INTEGER REFERENCES institutes(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE,
+  is_primary BOOLEAN DEFAULT FALSE,
+  status VARCHAR(20) NOT NULL DEFAULT 'active',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE (user_id, institute_id, role_id)
+);
+
+-- Indexes for faster lookups
+CREATE INDEX idx_user_institute_roles_user ON user_institute_roles(user_id);
+CREATE INDEX idx_user_institute_roles_institute ON user_institute_roles(institute_id);

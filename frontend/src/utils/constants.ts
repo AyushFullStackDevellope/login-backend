@@ -1,0 +1,46 @@
+export const APP_CONSTANTS = {
+  APP_NAME: "SchoolCoreOS",
+  LOGIN_TITLE: "SchoolCoreOS",
+  LOGIN_SUBTITLE: "Login to your account",
+  USERNAME_PLACEHOLDER: "Username",
+  PASSWORD_PLACEHOLDER: "Password",
+  LOGIN_BUTTON: "Continue",
+  LOGIN_TERMS: "By continuing, you agree to our Terms & Privacy Policy",
+  
+  ERROR_INVALID_CREDS: "Incorrect email or password. Please try again.",
+  ERROR_NO_INSTITUTE: "Your account is not associated with any institute.",
+  ERROR_LOGIN_FIRST: "Please login and select institute first",
+  ERROR_NO_DASHBOARD_DATA: "No dashboard data found. Please log in again.",
+  ERROR_ENTER_CREDENTIALS: "Please enter username and password",
+
+  DASHBOARD_WELCOME: "Welcome back",
+  DASHBOARD_WELCOME_NAME: "Welcome back, {name}!",
+  DASHBOARD_SUBTITLE: "Here is what's happening at {institute} today.",
+  DASHBOARD_PROFILE_TITLE: "Profile Overview",
+  DASHBOARD_READY_TITLE: "Ready to go!",
+  DASHBOARD_LOGOUT: "Log Out",
+  DASHBOARD_NAME: "Name",
+  DASHBOARD_EMAIL: "Email",
+  DASHBOARD_CURRENT_ROLE: "Current Role",
+  DASHBOARD_INSTITUTE: "Institute",
+  DASHBOARD_CONFIGURED_FOR: "Your dashboard is configured for your role as a ",
+  DASHBOARD_AT: "at",
+
+  INSTITUTE_SELECT_TITLE: "Hi, {name} ! 👋",
+  INSTITUTE_SELECT_SUBTITLE: "Select your institute to access your personalized dashboard",
+  SEARCH_PLACEHOLDER: "Search your institute...",
+
+  ROLE_SELECT_TITLE: "Choose your Role",
+  ROLE_SELECT_SUBTITLE: "Select how you would like to proceed into {institute}",
+  ROLE_CARD_SUBTEXT: "Select this role to continue",
+  CHANGE_INSTITUTE: "Change Institute",
+  SELECT_INST_FIRST: "Please login and select institute first",
+  
+  FOOTER_SUPPORT_INSTITUTE: "Can't find your institute? Contact your institute administrator or email us at ",
+  FOOTER_SUPPORT_ROLE: "Can't find your role? Contact your institute administrator or email us at ",
+  SUPPORT_EMAIL: "support@schoolcoreos.com",
+
+  ALT_LOGO: "logo",
+  ALT_INSTITUTE_LOGO: "institute logo",
+  ALT_SCHOOLCOREOS_LOGO: "SchoolCoreOS Logo",
+};
