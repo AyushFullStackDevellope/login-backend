@@ -1,9 +1,8 @@
-const API_BASE_URL = "http://localhost:3001";
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:3001";
 
 // LOGIN
 export async function login(email: string, password: string) {
-  const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || "http://localhost:3001";
   const response = await fetch(`${API_BASE_URL}/auth/login`, {
     method: "POST",
     headers: {
@@ -18,7 +17,7 @@ export async function login(email: string, password: string) {
     throw new Error(data.message || "Login failed");
   }
 
-  return data.data; // important
+  return data.data;
 }
 
 // GET INSTITUTES + ROLES
@@ -35,7 +34,7 @@ export async function getMyInstitutesRoles(preContextToken: string) {
     throw new Error(data.message || "Failed to fetch institutes and roles");
   }
 
-  return data.data; // important
+  return data.data;
 }
 
 // SELECT CONTEXT
@@ -64,7 +63,7 @@ export async function selectContext(
     throw new Error(data.message || "Failed to select context");
   }
 
-  return data.data; // important
+  return data.data;
 }
 
 // GET PROFILE
@@ -81,7 +80,7 @@ export async function getMe(accessToken: string) {
     throw new Error(data.message || "Failed to fetch user data");
   }
 
-  return data.data; // important
+  return data.data;
 }
 
 // LOGOUT
